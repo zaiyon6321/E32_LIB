@@ -1,13 +1,13 @@
 #include "Arduino.h"
 #include "e32433t30d.h"
 
-#define TX
+//#define TX
 //#define RX
 
-HardwareSerial uart2(2);
+HardwareSerial uart1(1);
 char num=0;
 
-E32 myE32(&uart2, _19200, _19P2 , 16, 17, 2, 4, 5);
+E32 myE32(&uart1, _19200, _19P2 , 27, 26, 2, 4, 5);
 
 void setup (){
   Serial.begin(115200);
@@ -26,6 +26,7 @@ void loop(){
   num++;
   delay(50);
   #endif
+  
   if(myE32.available()){
     Serial.println((int)myE32.getData());
   }
